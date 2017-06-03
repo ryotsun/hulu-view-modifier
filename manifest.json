@@ -1,0 +1,29 @@
+{
+  "name": "Hulu View Size Changer",
+  "version": "1.0.3",
+  "manifest_version": 2,
+  "description": "Hulu (Happy On)  の画面サイズを任意のサイズに調整する拡張です",
+  "icons": {
+    "128": "icon/128.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "https://*.happyon.jp/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.happyon.jp/*"
+      ],
+      "js": [
+        "script/jquery-3.2.1.min.js",
+        "script/script.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Hulu",
+    "default_popup": "popup.html"
+  }
+}

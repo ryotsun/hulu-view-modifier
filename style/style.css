@@ -1,0 +1,39 @@
+/**
+ * style.css
+ */
+
+dt {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+dd {
+    margin:0;
+}
+
+body {
+    text-align: center;
+    width: 300px;
+    color: #7ac143;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+form {
+}
+
+#width-value {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+label {
+    width: 100%;
+}
+
+#width-bar {
+    width: 70%;
+}
