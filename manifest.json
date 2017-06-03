@@ -1,15 +1,14 @@
 {
   "name": "Hulu View Size Changer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "manifest_version": 2,
-  "description": "Hulu (Happy On)  の画面サイズを任意のサイズに調整する拡張です",
+  "description": "Hulu（日本版）の画面調整をする Chrome 拡張です",
   "icons": {
     "128": "icon/128.png"
   },
   "permissions": [
     "tabs",
-    "storage",
-    "https://*.happyon.jp/*"
+    "storage"
   ],
   "content_scripts": [
     {

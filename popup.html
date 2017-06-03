@@ -6,16 +6,23 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
+<h1>Hulu View Modifier</h1>
 <form>
     <dl>
-        <dt>横幅の設定</dt>
+        <dt>動画プレイヤーの横幅</dt>
         <dd>
             <div id="width-value"></div>
-            <lavel for="width-bar">
+            <label for="width-bar">
                 <span>30%</span>
                 <input type="range" id="width-bar" min="30" max="100" step="1">
                 <span>100%</span>
-            </lavel>
+            </label>
+        </dd>
+        <dt>サムネイルのポップアップ</dt>
+        <dd>
+            <label for="popup-zoom">
+                <input type="checkbox" id="popup-zoom"> ポップアップを表示する
+            </label>
         </dd>
     </dl>
 </form>

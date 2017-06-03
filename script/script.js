@@ -5,42 +5,52 @@
 'use strict';
 
 $(document).ready(function() {
-    var data = ['content_width'];
+    var data = ['content_width', 'is_zoom'];
 
     chrome.storage.sync.get(data, function(values) {
         if (!$.isEmptyObject(values)) {
-            document.body.style.width = values['content_width'] + '%';
-            $('header').width(values['content_width'] + '%');
-            $('.vod-mod-movie__inner:first-child').width('100%');
+            // for view width
+            if (location.href.indexOf('watch') > 0) {
+                document.body.style.width = values['content_width'] + '%';
+                $('header').width(values['content_width'] + '%');
+                $('.vod-mod-movie__inner:first-child').width('100%');
+            }
+
+            // for popup
+            if (!values['is_zoom']) {
+                disablePopUp();
+            }
         }
     });
 
+    function disablePopUp() {
+        $("[class^='vod-mod-tray__']").on('mouseover', function(e) {
+            return false;
+        });
+    }
+
+    function enablePopUp() {
+        $("[class^='vod-mod-tray__']").off('mouseover');
+    }
+
     chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
-        if (response.content_width) {
-            console.log(response);
-            document.body.style.width = response.content_width + '%';
-            $('header').width(response.content_width + '%');
-            $('.vod-mod-movie__inner:first-child').width('100%');
+        if (response) {
+            if (response.content_width) {
+                console.log(response);
+                document.body.style.width = response.content_width + '%';
+                $('header').width(response.content_width + '%');
+                $('.vod-mod-movie__inner:first-child').width('100%');
+            }
+
+            if (response.is_zoom) {
+                enablePopUp();
+            } else {
+                disablePopUp();
+            }
+
             sendResponse(response);
         } else {
             sendResponse('no response');
         }
     });
-
-    $(document).on('click', '.vod-mod-profile__image', function(e) {
-       var name = e.target.parentNode.parentNode.nextSibling.nextSibling.innerHTML;
-       localStorage.setItem('hulu-ext-account', name);
-       console.log(name);
-       debugger;
-    });
-
-    var login_account = localStorage.getItem('hulu-ext-account');
-
-    var accounts = $('.vod-mod-profile__name');
-    var forms = $('form');
-    for (var i = 0, l = accounts.length; i < l; i++) {
-        if (login_account === accounts[i].innerHTML) {
-            forms[i].submit();
-        }
-    }
 });

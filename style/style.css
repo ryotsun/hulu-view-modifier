@@ -4,11 +4,14 @@
 
 dt {
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 14px;
+    text-align: left;
+    color: #666666;
 }
 
 dd {
     margin:0;
+    margin-bottom: 30px;
 }
 
 body {
@@ -36,4 +39,8 @@ label {
 
 #width-bar {
     width: 70%;
+}
+
+.popup-zoom {
+    text-align: left;
 }
