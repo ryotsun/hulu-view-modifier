@@ -1,6 +1,6 @@
 {
   "name": "Hulu View Modifier",
-  "version": "1.0.5",
+  "version": "1.1.1",
   "manifest_version": 2,
   "description": "Hulu（日本版）の画面調整をする Chrome 拡張です",
   "icons": {

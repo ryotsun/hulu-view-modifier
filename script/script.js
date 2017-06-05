@@ -19,6 +19,10 @@ $(document).ready(function() {
             // for popup
             if (!values['is_zoom']) {
                 disablePopUp();
+
+                $(document).on('scroll', function() {
+                    disablePopUp();
+                });
             }
         }
     });
@@ -31,6 +35,7 @@ $(document).ready(function() {
 
     function enablePopUp() {
         $("[class^='vod-mod-tray__']").off('mouseover');
+        $(document).off('scroll');
     }
 
     chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
