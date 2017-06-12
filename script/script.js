@@ -19,23 +19,18 @@ $(document).ready(function() {
             // for popup
             if (!values['is_zoom']) {
                 disablePopUp();
-
-                $(document).on('scroll', function() {
-                    disablePopUp();
-                });
             }
         }
     });
 
     function disablePopUp() {
-        $("[class^='vod-mod-tray__']").on('mouseover', function(e) {
+        $(".vod-mod-series-area__tray, .vod-mod-tray__content").on('mouseover', "[class^='vod-mod-tray__']", function(e) {
             return false;
         });
     }
 
     function enablePopUp() {
-        $("[class^='vod-mod-tray__']").off('mouseover');
-        $(document).off('scroll');
+        $(".vod-mod-series-area__tray, .vod-mod-tray__content").off('mouseover', "[class^='vod-mod-tray__']");
     }
 
     chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
