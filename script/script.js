@@ -27,10 +27,14 @@ $(document).ready(function() {
         $(".vod-mod-series-area__tray, .vod-mod-tray__content").on('mouseover', "[class^='vod-mod-tray__']", function(e) {
             return false;
         });
+        $(".vod-mod-content").on('mouseover', "[class^='vod-mod-tile__']", function(e) {
+            return false;
+        });
     }
 
     function enablePopUp() {
         $(".vod-mod-series-area__tray, .vod-mod-tray__content").off('mouseover', "[class^='vod-mod-tray__']");
+        $(".vod-mod-content").off('mouseover', "[class^='vod-mod-tile__']");
     }
 
     chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
