@@ -41,9 +41,11 @@ $(document).ready(function() {
         if (response) {
             if (response.content_width) {
                 console.log(response);
-                document.body.style.width = response.content_width + '%';
-                $('header').width(response.content_width + '%');
-                $('.vod-mod-movie__inner:first-child').width('100%');
+                if (location.href.indexOf('watch') > 0) {
+                    document.body.style.width = response.content_width + '%';
+                    $('header').width(response.content_width + '%');
+                    $('.vod-mod-movie__inner:first-child').width('100%');
+                }
             }
 
             if (response.is_zoom) {
