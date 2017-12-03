@@ -154,6 +154,12 @@ $(document).ready(function() {
 
     // 次の動画を見るボタンを押下時に、onload が走らないので監視する
     $("#bcc-next, #bcc-next-container, #bcc-end-screen").on('click', function() {
-       refresh();
+        refresh();
+    });
+    $(window).on('popstate', function() {
+        // 少し遅らせる
+        setTimeout(function() {
+            refresh();
+        }, 1200);
     });
 });
