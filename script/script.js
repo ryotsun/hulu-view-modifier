@@ -43,7 +43,7 @@ $(document).ready(function() {
                 // サムネイルの変更
                 var thumbnail = element.previousElementSibling.querySelector("img");
                 var thumbnail_new = element.querySelectorAll(".vod-mod-popup-panel__picture img");
-                if (thumbnail_new[thumbnail_new.length - 1].src !== "https://www.happyon.jp/") {
+                if (thumbnail_new[thumbnail_new.length - 1].src.indexOf("https://img.happyon.jp/") !== -1) {
                     thumbnail.src = thumbnail_new[thumbnail_new.length - 1].src;
                 }
             }
@@ -62,7 +62,7 @@ $(document).ready(function() {
                 var element = document.querySelector(id);
                 var thumbnail = element.previousElementSibling.querySelector("img");
                 var thumbnail_new = element.querySelectorAll(".vod-mod-popup-panel__picture img");
-                if (thumbnail_new[0].src !== "https://www.happyon.jp/") {
+                if (thumbnail_new[0].src.indexOf("https://img.happyon.jp/") !== -1) {
                     thumbnail.src = thumbnail_new[0].src;
                 }
             }
@@ -87,7 +87,7 @@ $(document).ready(function() {
                 // サムネイルの変更
                 var thumbnail = element.previousElementSibling.querySelector("img");
                 var thumbnail_new = element.querySelectorAll(".vod-mod-popup-panel__picture img");
-                if (thumbnail_new[thumbnail_new.length - 1].src !== "https://www.happyon.jp/") {
+                if (thumbnail_new[thumbnail_new.length - 1].src.indexOf("https://img.happyon.jp/") !== -1) {
                     thumbnail.src = thumbnail_new[thumbnail_new.length - 1].src;
                 }
             }
@@ -106,7 +106,7 @@ $(document).ready(function() {
                 var element = document.querySelector(id);
                 var thumbnail = element.previousElementSibling.querySelector("img");
                 var thumbnail_new = element.querySelectorAll(".vod-mod-popup-panel__picture img");
-                if (thumbnail_new[0].src !== "https://www.happyon.jp/") {
+                if (thumbnail_new[0].src.indexOf("https://img.happyon.jp/") !== -1) {
                     thumbnail.src = thumbnail_new[0].src;
                 }
             }
@@ -139,5 +139,21 @@ $(document).ready(function() {
         } else {
             sendResponse('no response');
         }
+    });
+
+    function refresh() {
+        chrome.storage.sync.get(data, function(values) {
+            if (!$.isEmptyObject(values)) {
+                // for popup
+                if (!values['is_zoom']) {
+                    disablePopUp();
+                }
+            }
+        });
+    }
+
+    // 次の動画を見るボタンを押下時に、onload が走らないので監視する
+    $("#bcc-next, #bcc-next-container, #bcc-end-screen").on('click', function() {
+       refresh();
     });
 });
